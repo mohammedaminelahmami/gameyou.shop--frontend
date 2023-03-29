@@ -15,13 +15,13 @@ const routes: Routes = [
   },
 
   {
-    path: '',
+    path: 'client',
     loadChildren: () =>
       import('./pages/client/client-routing.module').then(
         (m) => m.ClientRoutingModule
       ),
-    canActivate: [AuthGuard, CheckRoleGuard],
-    data: { expectedRole: ['ROLE_CLIENT'] },
+    // canActivate: [AuthGuard, CheckRoleGuard],
+    // data: { expectedRole: ['ROLE_CLIENT'] },
   },
 
   {
