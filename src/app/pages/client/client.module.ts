@@ -6,9 +6,17 @@ import { ClientRoutingModule } from './client-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { CategoryComponent } from './category/category.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
-  declarations: [ProfileComponent, HomeComponent, CategoryComponent],
+  declarations: [
+    ProfileComponent,
+    HomeComponent,
+    CategoryComponent,
+    ShoppingCartComponent,
+    ProductComponent,
+  ],
   imports: [CommonModule, ClientRoutingModule, ComponentsModule],
 })
 export class ClientModule {}
