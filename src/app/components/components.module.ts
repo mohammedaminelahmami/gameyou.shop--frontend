@@ -13,6 +13,7 @@ import { TopDealsComponentComponent } from './top-deals-component/top-deals-comp
 import { FreeDeliveryProductsComponentComponent } from './free-delivery-products-component/free-delivery-products-component.component';
 import { GamyouAdComponent } from './gamyou-ad/gamyou-ad.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { FilterBarComponent } from './filter-bar/filter-bar.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     FreeDeliveryProductsComponentComponent,
     GamyouAdComponent,
     ShoppingCartComponent,
+    FilterBarComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -43,6 +45,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     FreeDeliveryProductsComponentComponent,
     GamyouAdComponent,
     ShoppingCartComponent,
+    FilterBarComponent,
   ],
 })
 export class ComponentsModule {}
