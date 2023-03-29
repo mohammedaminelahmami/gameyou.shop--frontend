@@ -12,7 +12,6 @@ import { ExploreCategoriesComponent } from './explore-categories/explore-categor
 import { TopDealsComponentComponent } from './top-deals-component/top-deals-component.component';
 import { FreeDeliveryProductsComponentComponent } from './free-delivery-products-component/free-delivery-products-component.component';
 import { GamyouAdComponent } from './gamyou-ad/gamyou-ad.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
 import { ProductComponentComponent } from './product-component/product-component.component';
 
@@ -29,7 +28,6 @@ import { ProductComponentComponent } from './product-component/product-component
     TopDealsComponentComponent,
     FreeDeliveryProductsComponentComponent,
     GamyouAdComponent,
-    ShoppingCartComponent,
     FilterBarComponent,
     ProductComponentComponent,
   ],
@@ -46,7 +44,6 @@ import { ProductComponentComponent } from './product-component/product-component
     TopDealsComponentComponent,
     FreeDeliveryProductsComponentComponent,
     GamyouAdComponent,
-    ShoppingCartComponent,
     FilterBarComponent,
     ProductComponentComponent,
   ],
