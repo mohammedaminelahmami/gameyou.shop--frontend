@@ -14,6 +14,7 @@ import { FreeDeliveryProductsComponentComponent } from './free-delivery-products
 import { GamyouAdComponent } from './gamyou-ad/gamyou-ad.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
+import { ProductComponentComponent } from './product-component/product-component.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FilterBarComponent } from './filter-bar/filter-bar.component';
     GamyouAdComponent,
     ShoppingCartComponent,
     FilterBarComponent,
+    ProductComponentComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -46,6 +48,7 @@ import { FilterBarComponent } from './filter-bar/filter-bar.component';
     GamyouAdComponent,
     ShoppingCartComponent,
     FilterBarComponent,
+    ProductComponentComponent,
   ],
 })
 export class ComponentsModule {}
