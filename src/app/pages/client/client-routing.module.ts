@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductComponent } from './product/product.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'product', component: ProductComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'cart', component: ShoppingCartComponent },
+  { path: 'checkout', component: CheckoutComponent },
 ];
 
 @NgModule({
