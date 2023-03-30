@@ -31,6 +31,7 @@ export class LoginComponent {
         let data: any = this.authservice.decodeJWT();
         let currentUser = {
           id: data.id,
+          idStore: data.idStore,
           email: data.sub,
           role: data.roles[0].authority,
         };

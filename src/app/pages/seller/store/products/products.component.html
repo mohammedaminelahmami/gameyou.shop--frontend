@@ -1,65 +1,102 @@
-<div class="container mx-auto">
-    <form [formGroup]="addProductForm" (ngSubmit)="saveProduct(addProductForm.value)" class="flex gap-10 w-full">
-        <div class="w-1/2">
-            <div class="flex flex-col mt-2">
-                <input type="text" placeholder="Product Name" formControlName="name"
-                    class="w-full px-4 py-3 mt-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-primary" />
-
-                <select
-                    class="w-full px-4 py-3.5 mt-4 border rounded-md focus:outline-none focus:ring-1 bg-white focus:ring-primary"
-                    formControlName="categoryName">
-                    <option selected>Type</option>
-                    <option>Accessories</option>
-                    <option>Laptops</option>
-                    <option>access</option>
-                    <option>Chair / Desk</option>
-                </select>
-
-                <input type="number" placeholder="Price" formControlName="price"
-                    class="w-full px-4 py-3 mt-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-primary" />
-
-                <input type="number" placeholder="Quantity" formControlName="quantity"
-                    class="w-full px-4 py-3 mt-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-primary" />
-
-                <input type="text" placeholder="Title" formControlName="title"
-                    class="w-full px-4 py-3 mt-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-primary" />
-
-            </div>
-            <div class="">
-                <textarea rows="3" cols="6" placeholder="Description" formControlName="description"
-                    class="w-full px-4 py-2 mt-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-primary"></textarea>
-            </div>
-            <button type="submit"
-                class="w-24 px-6 py-2 mt-4 text-white font-bold bg-primary rounded-lg hover:bg-blue-900">save</button>
-        </div>
-        <div class="w-1/2 mt-6">
-            <input type="file" class="hidden" (change)="uploadProductImages($event)" id="file" multiple required />
-            <!-- component -->
-            <main class="container mx-auto">
-                <!-- file upload modal -->
-                <article aria-label="File Upload Modal"
-                    class="relative h-full flex flex-col bg-white shadow-xl rounded-md" ondrop="dropHandler(event);"
-                    ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);"
-                    ondragenter="dragEnterHandler(event);">
-                    <!-- scroll area -->
-                    <section class="h-full overflow-auto p-8 w-full flex flex-col">
-                        <label for="file"
-                            class="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
-                            <p class="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
-                                <span>Drag and drop your</span>&nbsp;<span>Images anywhere or</span>
-                            </p>
-                            <input id="hidden-input" type="file" multiple class="hidden" />
-                            <div id="button"
-                                class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">
-                                Upload Images
+<!-- component -->
+<div class="sm:px-6 w-full mt-4">
+    <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded-md">
+        <div class="mt-2 overflow-x-auto">
+            <table class="w-full whitespace-nowrap">
+                <tbody>
+                    <tr *ngFor="let product of products" tabindex="0"
+                        class="focus:outline-none h-16 border border-gray-100 rounded">
+                        <!-- checkbox -->
+                        <td>
+                            <div class="ml-5">
+                                <div
+                                    class="bg-gray-200 rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">
+                                    <input type="checkbox" placeholder="checkbox"
+                                        class="focus:opacity-100 checkbox opacity-0 absolute cursor-pointer w-full h-full" />
+                                </div>
                             </div>
-                        </label>
-                    </section>
-                </article>
-            </main>
-            <div class="flex gap-6 w-16 h-16 mt-4">
-                <img *ngFor="let image of images" [src]="image" alt="" class="w-full h-full" />
-            </div>
+                        </td>
+
+                        <!-- ProductName -->
+                        <td class="">
+                            <div class="flex items-center pl-5">
+                                <p class="text-base font-medium leading-none text-gray-700 mr-2">{{ product.name }}</p>
+                            </div>
+                        </td>
+
+                        <!-- Price -->
+                        <td class="pl-24">
+                            <div class="flex items-center">
+                                <p class="text-sm leading-none text-gray-600 ml-2">$ {{ product.price }}</p>
+                            </div>
+                        </td>
+
+                        <!-- CreatedAt -->
+                        <td class="pl-5">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none">
+                                    <path d="M7.5 5H16.6667" stroke="#52525B" stroke-width="1.25" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                    <path d="M7.5 10H16.6667" stroke="#52525B" stroke-width="1.25"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M7.5 15H16.6667" stroke="#52525B" stroke-width="1.25"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M4.16669 5V5.00667" stroke="#52525B" stroke-width="1.25"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M4.16669 10V10.0067" stroke="#52525B" stroke-width="1.25"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M4.16669 15V15.0067" stroke="#52525B" stroke-width="1.25"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                                <p class="text-sm leading-none text-gray-600 ml-2">04/07</p>
+                            </div>
+                        </td>
+
+                        <!-- Quantity -->
+                        <td class="pl-5">
+                            <div class="flex items-center">
+                                <p class="text-sm leading-none text-gray-600 ml-2">23</p>
+                            </div>
+                        </td>
+
+                        <!-- UpdatedAt -->
+                        <td class="pl-5">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none">
+                                    <path
+                                        d="M12.5 5.83339L7.08333 11.2501C6.75181 11.5816 6.56556 12.0312 6.56556 12.5001C6.56556 12.9689 6.75181 13.4185 7.08333 13.7501C7.41485 14.0816 7.86449 14.2678 8.33333 14.2678C8.80217 14.2678 9.25181 14.0816 9.58333 13.7501L15 8.33339C15.663 7.67034 16.0355 6.77107 16.0355 5.83339C16.0355 4.8957 15.663 3.99643 15 3.33339C14.337 2.67034 13.4377 2.29785 12.5 2.29785C11.5623 2.29785 10.663 2.67034 10 3.33339L4.58333 8.75005C3.58877 9.74461 3.03003 11.0935 3.03003 12.5001C3.03003 13.9066 3.58877 15.2555 4.58333 16.2501C5.57789 17.2446 6.92681 17.8034 8.33333 17.8034C9.73985 17.8034 11.0888 17.2446 12.0833 16.2501L17.5 10.8334"
+                                        stroke="#52525B" stroke-width="1.25" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                                <p class="text-sm leading-none text-gray-600 ml-2">04/07</p>
+                            </div>
+                        </td>
+
+                        <!-- ??? -->
+                        <td class="pl-5">
+                            <button
+                                class="py-3 px-3 text-sm focus:outline-none leading-none text-red-700 bg-red-100 rounded">Due
+                                today at 18:00</button>
+                        </td>
+
+                        <!-- Edit Product Button -->
+                        <td class="pl-4 cursor-pointer">
+                            <i class="text-primary fa-solid fa-pen-to-square"></i>
+                        </td>
+
+                        <!-- Delete Product Button -->
+                        <td>
+                            <div class="relative px-5 cursor-pointer">
+                                <div>
+                                    <i class="text-red-600 fa-solid fa-trash"></i>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </form>
+    </div>
 </div>

@@ -7,6 +7,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductComponent } from './product/product.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'cart', component: ShoppingCartComponent },
+  { path: 'orders', component: OrdersComponent },
   { path: 'checkout', component: CheckoutComponent },
 ];
 

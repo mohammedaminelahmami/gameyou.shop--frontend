@@ -32,10 +32,17 @@ export class ProductService {
     );
   }
 
-  // getAllProduct(pageAndSize: FormData) {
-  //   return this.http.get(
-  //     Constants.apiEndPoint.product.getAllProduct,
-  //     pageAndSize
-  //   );
-  // }
+  getAllProduct(pageAndSize: any) {
+    return this.http.get(
+      Constants.apiEndPoint.product.getAllProduct,
+      pageAndSize
+    );
+  }
+
+  getAllStoreProduct(pageAndSize: any, idStore: any) {
+    return this.http.get(
+      Constants.apiEndPoint.product.getAllStoreProduct.replace(':id', idStore),
+      pageAndSize
+    );
+  }
 }

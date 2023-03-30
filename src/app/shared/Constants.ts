@@ -13,6 +13,7 @@ export const Constants = {
       updateProduct: environment.baseUrl + '/product/:id',
       getOneProduct: environment.baseUrl + '/product/:id',
       getAllProduct: environment.baseUrl + '/product',
+      getAllStoreProduct: environment.baseUrl + '/product/store/:id',
     },
   },
 };
