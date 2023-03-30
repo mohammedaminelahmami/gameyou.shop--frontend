@@ -36,4 +36,26 @@ export class ProductsComponent implements OnInit {
         }
       );
   }
+
+  showModal: boolean = false;
+  idProduct: any;
+
+  toggleModal(action: boolean, idProduct: any) {
+    this.showModal = action;
+    this.idProduct = idProduct;
+  }
+
+  confirmDelete() {
+    this.productService.deleteProduct(this.idProduct).subscribe(
+      (response: any) => {
+        this.getAllProductsStore();
+        this.showModal = false;
+        console.log('response : ', response);
+      },
+      (error: any) => {
+        this.showModal = false;
+        console.log('error : ', error);
+      }
+    );
+  }
 }

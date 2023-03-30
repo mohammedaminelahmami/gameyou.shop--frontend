@@ -42,6 +42,8 @@ export class AddProductComponent {
     this.productService.addProduct(formData).subscribe(
       (response) => {
         console.log('response => : ', response);
+        this.addProductForm.reset();
+        // pop up success
       },
       (error) => {
         console.log('error => : ', error);
