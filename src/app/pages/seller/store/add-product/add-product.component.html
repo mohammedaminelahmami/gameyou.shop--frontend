@@ -1,4 +1,4 @@
-<div class="container mx-auto">
+<div *ngIf="!isLoading" class="container mx-auto">
     <form [formGroup]="addProductForm" (ngSubmit)="saveProduct(addProductForm.value)" class="flex gap-10 w-full">
         <div class="w-1/2">
             <div class="flex flex-col mt-2">
@@ -62,4 +62,9 @@
             </div>
         </div>
     </form>
+</div>
+
+<!-- isLoading -->
+<div *ngIf="isLoading" class="flex justify-center mt-72">
+    <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
 </div>

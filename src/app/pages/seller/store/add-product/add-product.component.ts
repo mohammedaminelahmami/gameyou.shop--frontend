@@ -16,6 +16,8 @@ export class AddProductComponent {
 
   images: any[] = [];
   eventTargetImages: any[] = [];
+  isLoading: boolean = false;
+
   addProductForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     title: new FormControl('', [Validators.required]),
@@ -27,6 +29,8 @@ export class AddProductComponent {
   });
 
   saveProduct(data: any) {
+    // loader start
+    this.isLoading = true;
     const formData = new FormData();
     formData.append('name', data.name);
     formData.append('title', data.title);
@@ -43,9 +47,10 @@ export class AddProductComponent {
       (response) => {
         console.log('response => : ', response);
         this.addProductForm.reset();
-        // pop up success
+        this.isLoading = false;
       },
       (error) => {
+        this.isLoading = false;
         console.log('error => : ', error);
       }
     );
