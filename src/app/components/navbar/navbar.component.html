@@ -2,7 +2,9 @@
     <div class="container mx-auto flex justify-between items-center">
         <p class="text-white ml-4">sell on gameyou</p>
         <p class="text-white ml-4">gameyou</p>
-        <p class="text-white ml-4">العربية</p>
+        <p [classList]="checkIfUserLoggedIn ? 'hidden' : 'text-white ml-4'" class="">العربية</p>
+        <p (click)="logout(false)" [classList]="checkIfUserLoggedIn ? '' : 'hidden'" class=""><i
+                class="cursor-pointer text-white fa-solid fa-right-from-bracket"></i></p>
     </div>
 </div>
 <div class="bg-gray-50">
@@ -15,18 +17,40 @@
         <div class="mt-8">
             <app-search></app-search>
         </div>
-        <div class="flex gap-12">
-            <div routerLink="/register" class="flex gap-3 cursor-pointer">
+        <div [classList]="checkIfUserLoggedIn ? 'flex gap-12': 'flex gap-12'">
+            <div [classList]="checkIfUserLoggedIn ? 'hidden': 'flex gap-3 cursor-pointer'" routerLink="/register">
                 <div><i class="text-primary fa-solid fa-user"></i></div>
                 <div>
                     Sign up
                 </div>
             </div>
 
-            <div routerLink="/login" class="flex gap-3 cursor-pointer">
+            <div [classList]="checkIfUserLoggedIn ? 'hidden': 'flex gap-3 cursor-pointer'" routerLink="/login">
                 <div><i class="text-primary fa-solid fa-right-to-bracket"></i></div>
                 <div>
                     Sign in
+                </div>
+            </div>
+
+            <div routerLink="/profile" [classList]="checkIfUserLoggedIn ? 'flex gap-3 cursor-pointer': 'hidden'">
+                <div><i class="text-primary fa-solid fa-user"></i></div>
+                <div>
+                    Profile
+                </div>
+            </div>
+
+            <div routerLink="/store"
+                [classList]="checkIfUserLoggedIn && checkIfUserIsSeller ? 'flex gap-3 cursor-pointer': 'hidden'">
+                <div><i class="text-primary fa-solid fa-store"></i></div>
+                <div>
+                    Store
+                </div>
+            </div>
+
+            <div [classList]="checkIfUserLoggedIn ? 'flex gap-3 cursor-pointer': 'hidden'" routerLink="/wishlist">
+                <div><i class="text-primary fa-solid fa-heart"></i></div>
+                <div>
+                    Wishlist
                 </div>
             </div>
 

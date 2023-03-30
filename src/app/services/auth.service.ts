@@ -9,30 +9,23 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private http: HttpClient, private route: Router) {}
 
-  loginAuth(email: string, hashedPassword: string) {
-    return this.http.post(Constants.apiEndPoint.auth.login, {
-      email,
-      hashedPassword,
-    });
+  loginAuth(data: any) {
+    return this.http.post(Constants.apiEndPoint.auth.login, data);
   }
 
-  registerClientAuth(data: any) {
-    return this.http.post(Constants.apiEndPoint.auth.registerClient, data);
-  }
-
-  registerSellerAuth(data: any) {
-    return this.http.post(Constants.apiEndPoint.auth.registerSeller, data);
+  registerAuth(data: any) {
+    return this.http.post(Constants.apiEndPoint.auth.register, data);
   }
 
   setCredentials(token: any) {
     if (token) {
-      localStorage.setItem('access_token', token);
-      this.route.navigate(['/']);
+      localStorage.setItem('accessToken', token);
+      this.route.navigate(['/home']);
     }
   }
 
   getCredentials() {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem('accessToken');
   }
 
   decodeJWT = (): any => {
@@ -47,7 +40,11 @@ export class AuthService {
   }
 
   getRole() {
-    return this.decodeJWT().role;
+    return this.decodeJWT().roles[0].authority;
+  }
+
+  setCurrentUserToLocal(user: any) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
   }
 
   getCurrentUserFromLocal(): any {

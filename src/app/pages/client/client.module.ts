@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { CategoryComponent } from './category/category.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductComponent } from './product/product.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { ProductComponent } from './product/product.component';
     CategoryComponent,
     ShoppingCartComponent,
     ProductComponent,
+    CheckoutComponent,
+    WishlistComponent,
   ],
   imports: [CommonModule, ClientRoutingModule, ComponentsModule],
 })
