@@ -9,6 +9,7 @@ import { CategoryComponent } from './category/category.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductComponent } from './product/product.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ShoppingCartComponent,
     ProductComponent,
     CheckoutComponent,
+    WishlistComponent,
   ],
   imports: [CommonModule, ClientRoutingModule, ComponentsModule],
 })

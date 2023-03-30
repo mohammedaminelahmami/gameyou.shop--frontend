@@ -14,6 +14,10 @@ import { FreeDeliveryProductsComponentComponent } from './free-delivery-products
 import { GamyouAdComponent } from './gamyou-ad/gamyou-ad.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
 import { ProductComponentComponent } from './product-component/product-component.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardNavbarComponent } from './dashboard-navbar/dashboard-navbar.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +34,15 @@ import { ProductComponentComponent } from './product-component/product-component
     GamyouAdComponent,
     FilterBarComponent,
     ProductComponentComponent,
+    DashboardNavbarComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatMenuModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+  ],
   exports: [
     PaginationComponent,
     SearchComponent,
@@ -46,6 +57,7 @@ import { ProductComponentComponent } from './product-component/product-component
     GamyouAdComponent,
     FilterBarComponent,
     ProductComponentComponent,
+    DashboardNavbarComponent,
   ],
 })
 export class ComponentsModule {}

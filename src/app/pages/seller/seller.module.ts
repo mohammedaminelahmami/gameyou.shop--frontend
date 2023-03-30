@@ -5,9 +5,22 @@ import { SellerRoutingModule } from './seller-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { StoreComponent } from './store/store.component';
+import { ProductsComponent } from './store/products/products.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [DashboardComponent, ProfileComponent],
-  imports: [CommonModule, SellerRoutingModule, ComponentsModule],
+  declarations: [
+    DashboardComponent,
+    ProfileComponent,
+    StoreComponent,
+    ProductsComponent,
+  ],
+  imports: [
+    CommonModule,
+    SellerRoutingModule,
+    ComponentsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class SellerModule {}

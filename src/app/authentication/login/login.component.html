@@ -10,16 +10,17 @@
 <div class="flex items-center justify-center min-h-screen bg-gray-100">
     <div class="px-8 py-6 mt-4 text-left bg-white shadow-lg">
         <h3 class="text-2xl font-bold text-center">Login to your account</h3>
-        <form>
+        <form [formGroup]="loginForm" (ngSubmit)="loginHandler(loginForm.value)">
             <div class="mt-4">
-                <input type="email" placeholder="Email"
+                <input type="email" placeholder="Email" formControlName="email"
                     class="w-full px-4 py-2 mt-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-primary" />
 
-                <input type="password" placeholder="Password"
+                <input type="password" placeholder="Password" formControlName="hashedPassword"
                     class="w-full px-4 py-2 mt-4 border rounded-md focus:outline-none focus:ring-1 focus:ring-primary" />
 
                 <div class="flex items-baseline justify-between">
-                    <button class="px-6 py-2 mt-4 text-white font-bold bg-primary rounded-lg hover:bg-blue-900">Sign
+                    <button type="submit"
+                        class="px-6 py-2 mt-4 text-white font-bold bg-primary rounded-lg hover:bg-blue-900">Sign
                         in</button>
 
                     <div routerLink="/register" class="text-sm text-primary hover:underline cursor-pointer">
