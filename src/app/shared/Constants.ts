@@ -15,5 +15,12 @@ export const Constants = {
       getAllProduct: environment.baseUrl + '/product',
       getAllStoreProduct: environment.baseUrl + '/product/store/:id',
     },
+    category: {
+      addCategory: environment.baseUrl + '/category',
+      deleteCategory: environment.baseUrl + '/category/:id',
+      updateCategory: environment.baseUrl + '/category/:id',
+      getOneCategory: environment.baseUrl + '/category/:id',
+      getAllCategory: environment.baseUrl + '/category',
+    },
   },
 };

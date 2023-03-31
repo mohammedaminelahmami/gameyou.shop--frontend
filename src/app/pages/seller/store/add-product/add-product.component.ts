@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { CategoryService } from './../../../../services/category.service';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from './../../../../services/product.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
@@ -8,11 +9,26 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css'],
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
+    private categoryService: CategoryService,
     private authService: AuthService
   ) {}
+
+  categories: any[] = [];
+
+  ngOnInit(): void {
+    this.categoryService.getAllCategory().subscribe(
+      (response: any) => {
+        console.log('response => : ', response);
+        this.categories = response;
+      },
+      (error: any) => {
+        console.log('error => : ', error);
+      }
+    );
+  }
 
   images: any[] = [];
   eventTargetImages: any[] = [];

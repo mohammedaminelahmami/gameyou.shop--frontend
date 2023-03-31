@@ -1,3 +1,4 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -37,11 +38,59 @@ export class ProductsComponent implements OnInit {
       );
   }
 
-  showModal: boolean = false;
+  editFormGroup: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    title: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    quantity: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required]),
+  });
+
+  getOneProduct(idProduct: any) {
+    this.productService.getOneProduct(idProduct).subscribe(
+      (response: any) => {
+        // console.log('response : ', response);
+        this.editFormGroup.patchValue({
+          name: response.name,
+          title: response.title,
+          description: response.description,
+          quantity: response.quantity,
+          price: response.price,
+        });
+      },
+      (error: any) => {
+        console.log('error : ', error);
+      }
+    );
+  }
+
+  updateProduct(data: any) {
+    console.log(data);
+    this.productService.updateProduct(data, this.idProduct).subscribe(
+      (response: any) => {
+        this.getAllProductsStore();
+        console.log('response : ', response);
+        this.toggleEditModal(!this.showEditModal, -1);
+      },
+      (error: any) => {
+        this.toggleEditModal(!this.showEditModal, -1);
+        console.log('error : ', error);
+      }
+    );
+  }
+
+  showDeleteModal: boolean = false;
+  showEditModal: boolean = false;
   idProduct: any;
 
-  toggleModal(action: boolean, idProduct: any) {
-    this.showModal = action;
+  toggleEditModal(action: boolean, idProduct: any) {
+    if (idProduct != -1) this.getOneProduct(idProduct);
+    this.showEditModal = action;
+    this.idProduct = idProduct;
+  }
+
+  toggleDeleteModal(action: boolean, idProduct: any) {
+    this.showDeleteModal = action;
     this.idProduct = idProduct;
   }
 
@@ -49,11 +98,11 @@ export class ProductsComponent implements OnInit {
     this.productService.deleteProduct(this.idProduct).subscribe(
       (response: any) => {
         this.getAllProductsStore();
-        this.showModal = false;
+        this.showDeleteModal = false;
         console.log('response : ', response);
       },
       (error: any) => {
-        this.showModal = false;
+        this.showDeleteModal = false;
         console.log('error : ', error);
       }
     );

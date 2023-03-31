@@ -9,10 +9,7 @@
                     class="w-full px-4 py-3.5 mt-4 border rounded-md focus:outline-none focus:ring-1 bg-white focus:ring-primary"
                     formControlName="categoryName">
                     <option selected>Type</option>
-                    <option>Accessories</option>
-                    <option>Laptops</option>
-                    <option>access</option>
-                    <option>Chair / Desk</option>
+                    <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
                 </select>
 
                 <input type="number" placeholder="Price" formControlName="price"
