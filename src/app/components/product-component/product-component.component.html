@@ -1,5 +1,5 @@
-<div routerLink="/product" class="hover:ring-1 ring-primary rounded-md bg-white">
-    <div class="cursor-pointer border-primary rounded-md w-full h-60">
+<div class="hover:ring-1 ring-primary rounded-md bg-white">
+    <div routerLink="/product" class="cursor-pointer border-primary rounded-md w-full h-60">
         <img src="assets/imgs/1.jpg" alt="laptop" class="w-full h-full" />
     </div>
 
@@ -7,15 +7,13 @@
         <!-- title -->
         <div class="text-sm w-60 mt-2">
             <p class="h-10 line-clamp-2">
-                Lorem ipsum dolor sit amet conseetur adipisicing elit. uhifher eufhie hifuhreihferih feriufh eriufherifh
-                iferhfiuerhfiueh erfieh t conseetur adipisicing elit t conseetur adipisicing elit t conseetur
-                adipisicing elit
+                {{ product.title }}
             </p>
         </div>
 
         <!-- Price -->
         <div>
-            <span class=" font-semibold text-lg text-primary">$1799.00</span>
+            <span class=" font-semibold text-lg text-primary">$ {{ product.price }}</span>
         </div>
 
         <div class="flex justify-between">

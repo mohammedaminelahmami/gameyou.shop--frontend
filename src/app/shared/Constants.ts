@@ -14,6 +14,7 @@ export const Constants = {
       getOneProduct: environment.baseUrl + '/product/:id',
       getAllProduct: environment.baseUrl + '/product',
       getAllStoreProduct: environment.baseUrl + '/product/store/:id',
+      getAllCategoryProduct: environment.baseUrl + '/product/category/:id',
     },
     category: {
       addCategory: environment.baseUrl + '/category',

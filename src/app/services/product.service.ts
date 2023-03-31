@@ -45,4 +45,14 @@ export class ProductService {
       pageAndSize
     );
   }
+
+  getAllCategoryProduct(pageAndSize: any, idProduct: any) {
+    return this.http.get(
+      Constants.apiEndPoint.product.getAllCategoryProduct.replace(
+        ':id',
+        idProduct
+      ),
+      pageAndSize
+    );
+  }
 }

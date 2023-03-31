@@ -12,8 +12,12 @@ import { OrdersComponent } from './orders/orders.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'category', component: CategoryComponent },
   { path: 'product', component: ProductComponent },
+  {
+    path: 'category',
+    component: CategoryComponent,
+    children: [{ path: ':id', component: CategoryComponent }],
+  },
   { path: 'profile', component: ProfileComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'cart', component: ShoppingCartComponent },
