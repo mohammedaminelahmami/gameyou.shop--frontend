@@ -1,63 +1,110 @@
-import { ProductService } from './../../../../services/product.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent {
-  constructor(private productService: ProductService) {}
+export class ProductsComponent implements OnInit {
+  constructor(
+    private productService: ProductService,
+    private authService: AuthService
+  ) {}
 
-  images: any[] = [];
-  eventTargetImages: any[] = [];
-  addProductForm: FormGroup = new FormGroup({
+  products: any[] = [];
+
+  ngOnInit(): void {
+    this.getAllProductsStore();
+  }
+
+  getAllProductsStore() {
+    const pageAndSize = new FormData();
+    pageAndSize.append('page', '1');
+    pageAndSize.append('size', '10');
+
+    this.productService
+      .getAllStoreProduct(pageAndSize, this.authService.decodeJWT().idStore)
+      .subscribe(
+        (response: any) => {
+          this.products = response;
+          console.log('response : ', response);
+        },
+        (error: any) => {
+          console.log('error : ', error);
+        }
+      );
+  }
+
+  editFormGroup: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     title: new FormControl('', [Validators.required]),
-    quantity: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
+    quantity: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
-    categoryName: new FormControl('', [Validators.required]),
-    images: new FormControl('', [Validators.required]),
   });
 
-  saveProduct(data: any) {
-    const formData = new FormData();
-    formData.append('name', data.name);
-    formData.append('title', data.title);
-    formData.append('quantity', data.quantity);
-    formData.append('description', data.description);
-    formData.append('price', data.price);
-    formData.append('categoryName', data.categoryName);
-    for (let i = 0; i < this.eventTargetImages.length; i++) {
-      formData.append('images', this.eventTargetImages[i]);
-    }
-
-    this.productService.addProduct(formData).subscribe(
-      (response) => {
-        console.log('response => : ', response);
+  getOneProduct(idProduct: any) {
+    this.productService.getOneProduct(idProduct).subscribe(
+      (response: any) => {
+        // console.log('response : ', response);
+        this.editFormGroup.patchValue({
+          name: response.name,
+          title: response.title,
+          description: response.description,
+          quantity: response.quantity,
+          price: response.price,
+        });
       },
-      (error) => {
-        console.log('error => : ', error);
+      (error: any) => {
+        console.log('error : ', error);
       }
     );
   }
 
-  uploadProductImages(event: any) {
-    if (event.target.files) {
-      if (this.images.length + event.target.files.length <= 4) {
-        for (let i = 0; File.length; i++) {
-          const reader = new FileReader();
-          reader.readAsDataURL(event.target.files[i]);
-          this.eventTargetImages.push(event.target.files[i]);
-          reader.onload = (event: any) => {
-            this.images.push(event.target.result);
-          };
-        }
-      } else {
-        alert('max images (4)');
+  updateProduct(data: any) {
+    console.log(data);
+    this.productService.updateProduct(data, this.idProduct).subscribe(
+      (response: any) => {
+        this.getAllProductsStore();
+        console.log('response : ', response);
+        this.toggleEditModal(!this.showEditModal, -1);
+      },
+      (error: any) => {
+        this.toggleEditModal(!this.showEditModal, -1);
+        console.log('error : ', error);
       }
-    }
+    );
+  }
+
+  showDeleteModal: boolean = false;
+  showEditModal: boolean = false;
+  idProduct: any;
+
+  toggleEditModal(action: boolean, idProduct: any) {
+    if (idProduct != -1) this.getOneProduct(idProduct);
+    this.showEditModal = action;
+    this.idProduct = idProduct;
+  }
+
+  toggleDeleteModal(action: boolean, idProduct: any) {
+    this.showDeleteModal = action;
+    this.idProduct = idProduct;
+  }
+
+  confirmDelete() {
+    this.productService.deleteProduct(this.idProduct).subscribe(
+      (response: any) => {
+        this.getAllProductsStore();
+        this.showDeleteModal = false;
+        console.log('response : ', response);
+      },
+      (error: any) => {
+        this.showDeleteModal = false;
+        console.log('error : ', error);
+      }
+    );
   }
 }

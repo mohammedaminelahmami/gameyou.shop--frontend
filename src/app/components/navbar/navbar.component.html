@@ -54,6 +54,13 @@
                 </div>
             </div>
 
+            <div [classList]="checkIfUserLoggedIn ? 'flex gap-3 cursor-pointer': 'hidden'" routerLink="/orders">
+                <div><i class="text-primary fa-solid fa-truck-fast"></i></div>
+                <div>
+                    Orders
+                </div>
+            </div>
+
             <div routerLink="/cart" class="flex gap-3 cursor-pointer">
                 <div><i class="text-primary fa-solid fa-cart-shopping"></i></div>
                 <div>

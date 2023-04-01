@@ -9,6 +9,9 @@ import { HomeComponent } from '../client/home/home.component';
 import { ProductComponent } from '../client/product/product.component';
 import { StoreComponent } from './store/store.component';
 import { ProductsComponent } from './store/products/products.component';
+import { AddProductComponent } from './store/add-product/add-product.component';
+import { DashboardComponent } from './store/dashboard/dashboard.component';
+import { StoreOrdersComponent } from './store/store-orders/store-orders.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,7 +26,13 @@ const routes: Routes = [
   {
     path: 'store',
     component: StoreComponent,
-    children: [{ path: 'products', component: ProductsComponent }],
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'addnewproduct', component: AddProductComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'orders', component: StoreOrdersComponent },
+    ],
   },
 ];
 
