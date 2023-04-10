@@ -1,10 +1,55 @@
+import { Router, NavigationExtras } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.css']
+  styleUrls: ['./shopping-cart.component.css'],
 })
 export class ShoppingCartComponent {
+  constructor(private router: Router) {}
 
+  cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  subtotal: number = this.cart.reduce(
+    (a: any, b: any) => a + b.price * b.quantity,
+    0
+  );
+
+  goToProductPage() {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        productFromPreviousPage: 'product',
+      },
+    };
+    this.router.navigate(['/product'], navigationExtras);
+  }
+
+  increaseQuantity(idx: number) {
+    this.cart[idx].quantity += 1;
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.subtotal = this.cart.reduce(
+      (a: any, b: any) => a + b.price * b.quantity,
+      0
+    );
+  }
+
+  decreaseQuantity(idx: number) {
+    if (this.cart[idx].quantity > 1) {
+      this.cart[idx].quantity -= 1;
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+    }
+    this.subtotal = this.cart.reduce(
+      (a: any, b: any) => a + b.price * b.quantity,
+      0
+    );
+  }
+
+  removeItemFromCart(idx: number) {
+    this.cart.splice(idx, 1);
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.subtotal = this.cart.reduce(
+      (a: any, b: any) => a + b.price * b.quantity,
+      0
+    );
+  }
 }
