@@ -34,6 +34,7 @@ export class ProductComponentComponent implements OnInit {
   addProductToFavorite(idx: number) {
     this.checkFavorite[idx] = !this.checkFavorite[idx];
     if (this.checkFavorite[idx]) {
+      this.showNotification();
       const favorite = JSON.parse(localStorage.getItem('favorite') || '[]');
       if (favorite.find((item: any) => item.id == this.product.id)) {
         return;
@@ -56,5 +57,19 @@ export class ProductComponentComponent implements OnInit {
       localStorage.setItem('favorite', JSON.stringify(favorite));
       this.cdf.detectChanges();
     }
+  }
+
+  showNotification() {
+    const notification = document.createElement('div');
+    notification.classList.add('notification');
+    notification.innerHTML = `
+    <div class="absolute top-0 right-64 m-24 bg-primary py-2 px-4 rounded-lg shadow-md">
+      <p class="text-white font-medium">Product added to favorite! </p>
+    </div>
+  `;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+      notification.remove();
+    }, 3000);
   }
 }
