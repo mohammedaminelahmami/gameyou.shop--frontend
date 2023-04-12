@@ -29,5 +29,15 @@ export const Constants = {
       getAllOrder: environment.baseUrl + '/order',
       // getAllUserOrder: environment.baseUrl + '/order/user/:id',
     },
+    client: {
+      getClient: environment.baseUrl + '/client/:id',
+      updateClientInfo: environment.baseUrl + '/client/updateInfo/:id',
+      updateClientPassword: environment.baseUrl + '/client/updatePassword/:id',
+    },
+    seller: {
+      getSeller: environment.baseUrl + '/seller/:id',
+      updateSellerInfo: environment.baseUrl + '/seller/updateInfo/:id',
+      updateSellerPassword: environment.baseUrl + '/seller/updatePassword/:id',
+    },
   },
 };

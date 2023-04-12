@@ -12,6 +12,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrdersComponent } from './orders/orders.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ClientRoutingModule,
     ComponentsModule,
     MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class ClientModule {}
