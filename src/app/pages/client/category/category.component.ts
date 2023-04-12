@@ -1,13 +1,5 @@
 import { CategoryService } from './../../../services/category.service';
-import {
-  ChangeDetectorRef,
-  Component,
-  DoCheck,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -19,9 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class CategoryComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
-    private productService: ProductService,
-    private cdr: ChangeDetectorRef,
-    private router: Router
+    private productService: ProductService
   ) {}
 
   categoryId: any = localStorage.getItem('idCategory') || -1;

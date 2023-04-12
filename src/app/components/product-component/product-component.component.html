@@ -22,7 +22,7 @@
                 <span class="text-secondary">-40%</span>
             </div>
 
-            <div (click)="addProductToFavorite(index)" class="cursor-pointer">
+            <div *ngIf="!isNotLoggedIn" (click)="addProductToFavorite(index)" class="cursor-pointer">
                 <i *ngIf="!checkFavorite[index]" class="text-primary fa-regular fa-heart"></i>
                 <i *ngIf="checkFavorite[index]" class="fa-solid fa-heart"></i>
             </div>

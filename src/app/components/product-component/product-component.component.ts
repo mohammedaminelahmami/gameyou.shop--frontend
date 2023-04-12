@@ -10,6 +10,7 @@ export class ProductComponentComponent implements OnInit {
   @Input() product: any;
   @Input() index: any;
   checkFavorite: boolean[] = [];
+  isNotLoggedIn: boolean = !localStorage.getItem('accessToken');
 
   constructor(private router: Router, private cdf: ChangeDetectorRef) {}
 

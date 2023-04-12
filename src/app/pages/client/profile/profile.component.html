@@ -1,1 +1,74 @@
 <app-navbar></app-navbar>
+
+<div class="w-full h-full bg-gray-50">
+    <div class="flex items-baseline">
+        <div class="w-1/2 flex flex-col items-center mt-24">
+            <div class="flex flex-col items-center gap-4">
+                <img src="/assets/imgs/86573912.jpeg" class="w-32 h-32 rounded-full">
+                <h1 class="text-2xl font-medium"> Mohammed Amine LAHMAMI </h1>
+            </div>
+
+            <form class="w-1/2 mt-10 flex flex-col justify-center">
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium mb-2" for="username">Username</label>
+                    <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primaryhover"
+                        id="username" type="text" formControlName="username">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium mb-2" for="email">Email</label>
+                    <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primaryhover"
+                        id="email" type="email" formControlName="email">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium mb-2" for="password">Current Password</label>
+                    <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primaryhover"
+                        id="password" type="password" formControlName="password">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium mb-2" for="phone">Phone</label>
+                    <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primaryhover"
+                        id="phone" type="tel" formControlName="phone">
+                </div>
+                <button type="submit" class="bg-primary text-white p-2 rounded-lg hover:bg-blue-900">Edit
+                    Profile</button>
+
+            </form>
+        </div>
+
+        <div class="w-1/2 self-center mt-48 mr-24">
+            <h1 class="text-xl text-primary font-semibold">Edit Password</h1>
+            <form class="w-full mt-10 flex flex-col justify-center">
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium mb-2" for="username">Current Password</label>
+                    <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primaryhover"
+                        id="username" type="password" formControlName="username">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium mb-2" for="email">New Password</label>
+                    <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primaryhover"
+                        id="email" type="password" formControlName="email">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium mb-2" for="phone">Confirm Password</label>
+                    <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primaryhover"
+                        id="password" type="tel" formControlName="phone">
+                </div>
+                <button type="submit" class="bg-primary text-white p-2 rounded-lg hover:bg-blue-900">Edit
+                    Password</button>
+
+            </form>
+        </div>
+    </div>
+</div>
