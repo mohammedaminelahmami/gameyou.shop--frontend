@@ -9,17 +9,9 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 export class ProductComponent implements OnInit {
   product: any = {};
   quantity: number = 1;
+  categoryName: string = 'noName';
 
   constructor(private snackBar: MatSnackBar) {}
-
-  openSnackBar(message: string) {
-    const config = new MatSnackBarConfig();
-    config.verticalPosition = 'top';
-    config.horizontalPosition = 'right';
-    config.duration = 2000;
-    config.panelClass = ['snackbar'];
-    this.snackBar.open(message, 'Dismiss', config);
-  }
 
   ngOnInit() {
     const product = history.state.productFromPreviousPage;
@@ -49,6 +41,8 @@ export class ProductComponent implements OnInit {
         price: this.product.price,
         quantity: this.quantity,
         title: this.product.title,
+        description: this.product.description,
+        categoryName: this.categoryName,
       };
       cart.push(product);
     }

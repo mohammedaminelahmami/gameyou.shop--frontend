@@ -23,5 +23,11 @@ export const Constants = {
       getOneCategory: environment.baseUrl + '/category/:id',
       getAllCategory: environment.baseUrl + '/category',
     },
+    order: {
+      addOrder: environment.baseUrl + '/order',
+      getOneOrder: environment.baseUrl + '/order/:id',
+      getAllOrder: environment.baseUrl + '/order',
+      // getAllUserOrder: environment.baseUrl + '/order/user/:id',
+    },
   },
 };
