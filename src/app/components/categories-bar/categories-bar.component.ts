@@ -1,6 +1,13 @@
 import { SharedService } from './../../services/shared.service';
 import { CategoryService } from './../../services/category.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  ChangeDetectorRef,
+} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories-bar',
@@ -10,12 +17,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class CategoriesBarComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getAllCategories();
   }
+
   randomNumber = Math.floor(Math.random() * 100);
   categories: any[] = [];
 
@@ -23,6 +32,9 @@ export class CategoriesBarComponent implements OnInit {
 
   emitValue(idCategory: any) {
     this.valueEmitter.emit(idCategory);
+    // bcb
+    localStorage.setItem('idCategory', idCategory);
+    this.router.navigate(['/category']);
   }
 
   getAllCategories() {

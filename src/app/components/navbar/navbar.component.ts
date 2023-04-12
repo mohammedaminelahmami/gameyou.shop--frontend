@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavbarComponent implements OnInit {
   constructor(
     private authService: AuthService,
+    private router: Router,
     private cdr: ChangeDetectorRef
   ) {}
   checkIfUserLoggedIn: boolean = false;
@@ -27,9 +29,10 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  logout(item: boolean) {
+  logout(check: boolean) {
     localStorage.clear();
-    this.checkIfUserLoggedIn = item;
+    this.checkIfUserLoggedIn = check;
     this.cdr.detectChanges();
+    this.router.navigate(['/home']);
   }
 }

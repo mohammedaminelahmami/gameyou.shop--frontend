@@ -25,6 +25,16 @@ export class ShoppingCartComponent {
   }
 
   goTocheckoutPage() {
+    if (this.cart.length == 0) {
+      alert('You have no item in your cart!');
+      return;
+    }
+
+    if (!localStorage.getItem('accessToken')) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
     const navigationExtras: NavigationExtras = {
       state: {
         subtotalFromShoppingCart: this.subtotal,
