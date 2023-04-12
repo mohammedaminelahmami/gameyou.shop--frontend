@@ -24,6 +24,15 @@ export class ShoppingCartComponent {
     this.router.navigate(['/product'], navigationExtras);
   }
 
+  goTocheckoutPage() {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        subtotalFromShoppingCart: this.subtotal,
+      },
+    };
+    this.router.navigate(['/checkout'], navigationExtras);
+  }
+
   increaseQuantity(idx: number) {
     this.cart[idx].quantity += 1;
     localStorage.setItem('cart', JSON.stringify(this.cart));

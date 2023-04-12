@@ -1,6 +1,5 @@
-import { ProductService } from 'src/app/services/product.service';
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product',
@@ -11,7 +10,16 @@ export class ProductComponent implements OnInit {
   product: any = {};
   quantity: number = 1;
 
-  constructor() {}
+  constructor(private snackBar: MatSnackBar) {}
+
+  openSnackBar(message: string) {
+    const config = new MatSnackBarConfig();
+    config.verticalPosition = 'top';
+    config.horizontalPosition = 'right';
+    config.duration = 2000;
+    config.panelClass = ['snackbar'];
+    this.snackBar.open(message, 'Dismiss', config);
+  }
 
   ngOnInit() {
     const product = history.state.productFromPreviousPage;
@@ -29,6 +37,7 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart() {
+    this.showNotification();
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
     if (cart.find((item: any) => item.id == this.product.id)) {
       cart.find((item: any) => item.id == this.product.id).quantity +=
@@ -44,5 +53,19 @@ export class ProductComponent implements OnInit {
       cart.push(product);
     }
     localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  showNotification() {
+    const notification = document.createElement('div');
+    notification.classList.add('notification');
+    notification.innerHTML = `
+    <div class="absolute top-0 right-0 m-24 bg-primary py-2 px-4 rounded-lg shadow-md">
+      <p class="text-white font-medium">Product added to cart! </p>
+    </div>
+  `;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+      notification.remove();
+    }, 3000);
   }
 }

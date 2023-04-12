@@ -13,8 +13,8 @@
             </div>
 
             <div class="flex justify-center flex-wrap gap-8 w-full mt-1">
-                <div *ngFor="let product of products" class="">
-                    <app-product-component [product]="product"></app-product-component>
+                <div *ngFor="let product of products; let i = index" class="">
+                    <app-product-component [product]="product" [index]="i"></app-product-component>
                 </div>
             </div>
             <!-- Pagination -->

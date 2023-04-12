@@ -12,6 +12,7 @@ export class CategoryComponent implements OnInit {
     private categoryService: CategoryService,
     private productService: ProductService
   ) {}
+
   categoryId: any;
   category: any = {};
   products: any = {};
