@@ -16,11 +16,11 @@ export const Constants = {
       getAllStoreProduct: environment.baseUrl + '/product/store/:id',
       getAllCategoryProduct: environment.baseUrl + '/product/category/:id',
       getProductsLessThan300:
-        environment.baseUrl + '/product/price/lessThan300',
+        environment.baseUrl + '/product/price/lessThan300/:id',
       getProductsBetween300To1500:
-        environment.baseUrl + '/product/price/between300To1500',
+        environment.baseUrl + '/product/price/between300To1500/:id',
       getProductsMoreThan1500:
-        environment.baseUrl + '/product/price/between1500To20000',
+        environment.baseUrl + '/product/price/between1500To20000/:id',
     },
     category: {
       addCategory: environment.baseUrl + '/category',

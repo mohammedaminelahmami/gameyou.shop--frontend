@@ -3,7 +3,80 @@
     <div class="w-full flex justify-between gap-4 mt-4">
         <div class="flex flex-col gap-8">
             <app-categories-bar (valueEmitter)="getEmittedValue($event)"></app-categories-bar>
-            <app-filter-bar></app-filter-bar>
+            <div>
+                <!-- price filter -->
+                <div class="bg-primary p-3 rounded-t-md">
+                    <p class="text-white font-semibold">Filter Product</p>
+                </div>
+                <div class="flex flex-col gap-7 bg-gray-100 p-6 w-64 rounded-md">
+                    <div>
+                        <div class="flex flex-col gap-2">
+                            <div (click)="getAllProductsLessThan300()"
+                                class="hover:underline hover:text-secondary cursor-pointer">Under $300</div>
+                            <div (click)="getAllProductsBetween300And1500()"
+                                class="hover:underline hover:text-secondary cursor-pointer">$300 to $1500</div>
+                            <div (click)="getAllProductsGreaterThan1500()"
+                                class="hover:underline hover:text-secondary cursor-pointer">$1500 & Above</div>
+                            <div></div>
+                        </div>
+
+                        <div class="mt-4">
+                            <div class="flex justify-center gap-2">
+                                <div class="w-36 h-8">
+                                    <input type="number" placeholder="$ Min" class="w-full h-full p-2 rounded-md" />
+                                </div>
+
+                                <div class="w-36 h-8">
+                                    <input type="number" placeholder="$ Max" class="w-full h-full p-2 rounded-md" />
+                                </div>
+
+                                <button type="button"
+                                    class="px-2 py-1 rounded-md font-semibold bg-primary text-white">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- customer review {stars} filter -->
+                <div class="flex flex-col gap-7 bg-gray-100 p-6 w-64 rounded-md mt-4">
+                    <div class="cursor-pointer hover:text-secondary">
+                        <i class="text-secondary fa-solid fa-star"></i>
+                        <i class="text-secondary fa-solid fa-star"></i>
+                        <i class="text-secondary fa-solid fa-star"></i>
+                        <i class="text-secondary fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span class="font-semibold"> &nbsp;&&nbsp; up</span>
+                    </div>
+
+                    <div class="cursor-pointer hover:text-secondary">
+                        <i class="text-secondary fa-solid fa-star"></i>
+                        <i class="text-secondary fa-solid fa-star"></i>
+                        <i class="text-secondary fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span class="font-semibold"> &nbsp;&&nbsp; up</span>
+                    </div>
+
+                    <div class="cursor-pointer hover:text-secondary">
+                        <i class="text-secondary fa-solid fa-star"></i>
+                        <i class="text-secondary fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span class="font-semibold"> &nbsp;&&nbsp; up</span>
+                    </div>
+
+                    <div class="cursor-pointer hover:text-secondary">
+                        <i class="text-secondary fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span class="font-semibold"> &nbsp;&&nbsp; up</span>
+                    </div>
+                </div>
+                <!-- discount filter -->
+            </div>
         </div>
 
         <div class="w-full bg-gray-100 rounded-md p-4">

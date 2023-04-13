@@ -59,4 +59,37 @@ export class CategoryComponent implements OnInit {
         }
       );
   }
+
+  getAllProductsLessThan300() {
+    this.productService.getProductsLessThan300(this.categoryId).subscribe(
+      (response: any) => {
+        this.products = response;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  getAllProductsBetween300And1500() {
+    this.productService.getProductsBetween300To1500(this.categoryId).subscribe(
+      (response: any) => {
+        this.products = response;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  getAllProductsGreaterThan1500() {
+    this.productService.getProductsMoreThan1500(this.categoryId).subscribe(
+      (response: any) => {
+        this.products = response;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
 }
