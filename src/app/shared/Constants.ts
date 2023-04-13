@@ -15,6 +15,12 @@ export const Constants = {
       getAllProduct: environment.baseUrl + '/product',
       getAllStoreProduct: environment.baseUrl + '/product/store/:id',
       getAllCategoryProduct: environment.baseUrl + '/product/category/:id',
+      getProductsLessThan300:
+        environment.baseUrl + '/product/price/lessThan300',
+      getProductsBetween300To1500:
+        environment.baseUrl + '/product/price/between300To1500',
+      getProductsMoreThan1500:
+        environment.baseUrl + '/product/price/between1500To20000',
     },
     category: {
       addCategory: environment.baseUrl + '/category',
@@ -27,6 +33,9 @@ export const Constants = {
       addOrder: environment.baseUrl + '/order',
       getOneOrder: environment.baseUrl + '/order/:id',
       getAllOrder: environment.baseUrl + '/order',
+      getAllOrderClient: environment.baseUrl + '/order/client/:id',
+      getAllOrderSeller: environment.baseUrl + '/order/seller/:id', // by store id
+      updateStatus: environment.baseUrl + '/order/status/:id',
       // getAllUserOrder: environment.baseUrl + '/order/user/:id',
     },
     client: {

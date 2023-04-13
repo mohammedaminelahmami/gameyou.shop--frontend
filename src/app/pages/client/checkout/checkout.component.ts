@@ -1,5 +1,7 @@
 import { OrderService } from './../../../services/order.service';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { OrderInterface } from 'src/app/interfaces/OrderInterface';
 
 @Component({
@@ -10,19 +12,21 @@ import { OrderInterface } from 'src/app/interfaces/OrderInterface';
 export class CheckoutComponent implements OnInit {
   total: number = 0;
   cart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-  constructor(private orderService: OrderService) {}
+  currentUser: any = JSON.parse(localStorage.getItem('currentUser') || '{}');
+  isLoading: boolean = false;
+  constructor(private orderService: OrderService, private router: Router) {}
 
   ngOnInit(): void {
     const subtotal = history.state.subtotalFromShoppingCart;
     this.total = subtotal;
     this.cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
   }
 
   placeOrder() {
+    this.isLoading = true;
     let order: OrderInterface = {
-      clientId: 1,
-      storeId: 1,
+      clientId: this.currentUser.id,
       paymentType: 'paypal',
       orderProducts: [],
     };
@@ -43,12 +47,37 @@ export class CheckoutComponent implements OnInit {
 
     this.orderService.saveOrder(order).subscribe(
       (res) => {
+        setTimeout(() => {
+          this.isLoading = false;
+          this.showModal = true;
+        }, 2000);
         console.log('res : ', res);
         localStorage.removeItem('cart');
       },
       (err) => {
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 2000);
         console.log('err : ', err);
       }
     );
+  }
+
+  formGroupInfoOrder = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl(''),
+    shippingAddress: new FormControl(''),
+  });
+
+  submitInfoOrder(formGroupInfoOrder: any) {}
+
+  showModal: boolean = false;
+  toggleShowModal(check: boolean) {
+    this.showModal = check;
+  }
+
+  redirectToHome() {
+    this.router.navigate(['/home']);
   }
 }

@@ -1,6 +1,6 @@
 export interface OrderInterface {
   clientId: number;
-  storeId: number;
+  // storeId: number;
   paymentType: string;
   orderProducts: {
     quantity: number;

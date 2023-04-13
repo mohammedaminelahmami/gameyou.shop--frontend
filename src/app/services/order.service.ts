@@ -12,4 +12,26 @@ export class OrderService {
   saveOrder(data: any) {
     return this.http.post(Constants.apiEndPoint.order.addOrder, data);
   }
+
+  getAllClientOrder(id: any) {
+    return this.http.get(
+      Constants.apiEndPoint.order.getAllOrderClient.replace(':id', id)
+    );
+  }
+
+  getAllSellerOrder(id: any) {
+    // by store id
+    return this.http.get(
+      Constants.apiEndPoint.order.getAllOrderSeller.replace(':id', id)
+    );
+  }
+
+  updateStatus(orderStatus: string, orderId: any) {
+    return this.http.put(
+      Constants.apiEndPoint.order.updateStatus.replace(':id', orderId) +
+        '?orderStatus=' +
+        orderStatus,
+      {}
+    );
+  }
 }

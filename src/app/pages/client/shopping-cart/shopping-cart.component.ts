@@ -15,14 +15,14 @@ export class ShoppingCartComponent {
     0
   );
 
-  goToProductPage() {
-    const navigationExtras: NavigationExtras = {
-      state: {
-        productFromPreviousPage: 'product',
-      },
-    };
-    this.router.navigate(['/product'], navigationExtras);
-  }
+  // goToProductPage() {
+  //   const navigationExtras: NavigationExtras = {
+  //     state: {
+  //       productFromPreviousPage: 'product',
+  //     },
+  //   };
+  //   this.router.navigate(['/product'], navigationExtras);
+  // }
 
   goTocheckoutPage() {
     if (this.cart.length == 0) {
