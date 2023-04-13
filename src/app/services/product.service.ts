@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { Constants } from './../shared/Constants';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -53,6 +52,33 @@ export class ProductService {
         idProduct
       ),
       pageAndSize
+    );
+  }
+
+  getProductsLessThan300(idCategory: any) {
+    return this.http.get(
+      Constants.apiEndPoint.product.getProductsLessThan300.replace(
+        ':id',
+        idCategory
+      )
+    );
+  }
+
+  getProductsBetween300To1500(idCategory: any) {
+    return this.http.get(
+      Constants.apiEndPoint.product.getProductsBetween300To1500.replace(
+        ':id',
+        idCategory
+      )
+    );
+  }
+
+  getProductsMoreThan1500(idCategory: any) {
+    return this.http.get(
+      Constants.apiEndPoint.product.getProductsMoreThan1500.replace(
+        ':id',
+        idCategory
+      )
     );
   }
 }

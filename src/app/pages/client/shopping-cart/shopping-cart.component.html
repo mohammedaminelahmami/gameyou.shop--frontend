@@ -5,29 +5,27 @@
     <div class="flex gap-8">
         <!-- Products -->
         <div class="flex flex-col gap-6 w-2/3 bg-gray-100 rounded-md">
-            <div class="flex gap-10 p-4">
-                <div routerLink="/product" class="rounded-md w-52 cursor-pointer">
+            <div *ngFor="let product of cart; let i = index" class="flex gap-10 p-4">
+                <div class="rounded-md w-52 cursor-pointer">
                     <img src="assets/imgs/1.jpg" alt="product" class="w-full h-full" />
                 </div>
                 <div class="flex flex-col justify-around w-1/2">
-                    <p routerLink="/product" class="cursor-pointer h-12 line-clamp-2 font-bold ">
-                        Lizsword Wired Gaming Mouse, PC Gaming Mice [Breathing RGB LED] [Plug Play] High-Precision
-                        Adjustable 7200 DPI, 7
-                        Programmable Buttons, Ergonomic Computer USB Mouse for Windows/PC/Mac/Laptop Gamer
+                    <p class="cursor-pointer h-12 line-clamp-2 font-bold ">
+                        {{ product.title }}
                     </p>
-                    <div class="cursor-pointer hover:text-secondary text-primary">
+                    <div (click)="removeItemFromCart(i)" class="cursor-pointer hover:text-secondary text-primary">
                         <i class="fa-sharp fa-solid fa-trash"></i>&nbsp;&nbsp;Remove
                     </div>
                 </div>
                 <div class="flex flex-col justify-around">
-                    <p class="text-xl font-semibold text-primary">$1500.00</p>
+                    <p class="text-xl font-semibold text-primary">${{ product.price }}</p>
 
                     <!-- Quantity -->
                     <div class="flex items-center gap-4 mt-6">
-                        <button type="button"
+                        <button (click)="decreaseQuantity(i)" type="button"
                             class="px-4 py-2 rounded-md text-white font-semibold bg-primary">-</button>
-                        <div class="font-semibold">6</div>
-                        <button type="button"
+                        <div class="font-semibold">{{ product.quantity }}</div>
+                        <button (click)="increaseQuantity(i)" type="button"
                             class="px-4 py-2 rounded-md text-white font-semibold bg-primary">+</button>
                     </div>
                 </div>
@@ -38,10 +36,11 @@
         <!-- checkout -->
         <div class="flex flex-col justify-around w-1/3 h-60 bg-gray-100 rounded-md">
             <div class="self-center">
-                <button routerLink="/checkout" type="button"
+                <button (click)="goTocheckoutPage()" type="button"
                     class="text-white text-lg font-semibold bg-primary hover:bg-blue-950 px-28 py-3 rounded-full">Go
                     to
-                    checkout</button>
+                    checkout
+                </button>
             </div>
 
             <div class="flex justify-around font-semibold">
@@ -58,7 +57,7 @@
                     Subtotal
                 </div>
                 <div class="w-36 text-2xl text-secondary">
-                    $9000.00
+                    $ {{ subtotal }}
                 </div>
             </div>
         </div>

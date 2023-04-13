@@ -1,5 +1,6 @@
 import { CategoryService } from './../../../services/category.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -12,11 +13,17 @@ export class CategoryComponent implements OnInit {
     private categoryService: CategoryService,
     private productService: ProductService
   ) {}
-  categoryId: any;
-  category: any = {};
-  products: any = {};
 
-  ngOnInit(): void {}
+  categoryId: any = localStorage.getItem('idCategory') || -1;
+  category: any = {};
+  products: any = [];
+
+  isRefresh: boolean = false;
+
+  ngOnInit(): void {
+    this.getOneCategory();
+    this.getAllProductsCategory();
+  }
 
   getOneCategory() {
     this.categoryService.getOneCategory(this.categoryId).subscribe(
@@ -51,5 +58,38 @@ export class CategoryComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  getAllProductsLessThan300() {
+    this.productService.getProductsLessThan300(this.categoryId).subscribe(
+      (response: any) => {
+        this.products = response;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  getAllProductsBetween300And1500() {
+    this.productService.getProductsBetween300To1500(this.categoryId).subscribe(
+      (response: any) => {
+        this.products = response;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  getAllProductsGreaterThan1500() {
+    this.productService.getProductsMoreThan1500(this.categoryId).subscribe(
+      (response: any) => {
+        this.products = response;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
   }
 }

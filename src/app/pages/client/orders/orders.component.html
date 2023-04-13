@@ -1,2 +1,39 @@
 <app-navbar></app-navbar>
-<p>orders works!</p>
+<div class="container mx-auto">
+    <div class="w-full flex justify-between gap-4 mt-4">
+        <div class="w-full bg-gray-100 rounded-md p-4">
+            <div class="flex items-center gap-2 ml-6">
+                <div><i class="text-primary fa-solid fa-truck-fast"></i></div>
+                <div class="text-xl my-4 font-semibold text-primary">&nbsp;My Orders</div>
+            </div>
+
+            <div class="flex flex-col justify-center flex-wrap gap-8 w-full mt-1">
+                <div *ngFor="let order of orders; let i = index"
+                    class="flex justify-between mx-60    gap-10 p-4 rounded-md border-2 border-collapse">
+                    <div class="rounded-md w-48 h-48 cursor-pointer">
+                        <img src="assets/imgs/1.jpg" alt="product" class="w-full h-full" />
+                    </div>
+                    <div class="flex flex-col justify-around w-1/2">
+                        <p class=" cursor-pointer h-12 line-clamp-2 font-bold text-xl">
+                            Status&nbsp;&nbsp;:&nbsp;&nbsp;<span class="text-blue-700">{{ order.status }}</span>
+                        </p>
+
+                        <p class="cursor-pointer h-12 line-clamp-2 font-bold text-xl">
+                            Payment Type&nbsp;&nbsp;:&nbsp;&nbsp;<span class="text-blue-700">{{ order.paymentType
+                                }}</span>
+                        </p>
+
+                        <div class="flex flex-col justify-around">
+                            <p class="text-xl font-semibold text-primary"><i
+                                    class="text-primary fa-solid fa-bring-front"></i>&nbsp;Total
+                                Products&nbsp;&nbsp;:&nbsp;&nbsp;<span class="text-blue-700">$ {{ order.total }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination -->
+            <div class="flex justify-center cursor-pointer my-4 mt-8 text-gray-700">Show more ...</div>
+        </div>
+    </div>
+</div>

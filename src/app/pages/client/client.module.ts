@@ -11,6 +11,8 @@ import { ProductComponent } from './product/product.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrdersComponent } from './orders/orders.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,13 @@ import { OrdersComponent } from './orders/orders.component';
     WishlistComponent,
     OrdersComponent,
   ],
-  imports: [CommonModule, ClientRoutingModule, ComponentsModule],
+  imports: [
+    CommonModule,
+    ClientRoutingModule,
+    ComponentsModule,
+    MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class ClientModule {}

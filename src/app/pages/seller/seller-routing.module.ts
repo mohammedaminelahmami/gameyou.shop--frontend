@@ -27,7 +27,7 @@ const routes: Routes = [
     path: 'store',
     component: StoreComponent,
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'addnewproduct', component: AddProductComponent },
       { path: 'products', component: ProductsComponent },

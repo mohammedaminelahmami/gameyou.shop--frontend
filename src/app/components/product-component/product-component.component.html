@@ -1,5 +1,5 @@
 <div class="hover:ring-1 ring-primary rounded-md bg-white">
-    <div routerLink="/product" class="cursor-pointer border-primary rounded-md w-full h-60">
+    <div (click)="goToProductPage()" class="cursor-pointer border-primary rounded-md w-full h-60">
         <img src="assets/imgs/1.jpg" alt="laptop" class="w-full h-full" />
     </div>
 
@@ -18,12 +18,13 @@
 
         <div class="flex justify-between">
             <div>
-                <span class="text-sm text-gray-500 line-through">$2999.99</span>&nbsp;&nbsp;<span
-                    class="text-secondary">-40%</span>
+                <span class="text-sm text-gray-500 line-through">$2999.99</span>&nbsp;&nbsp;
+                <span class="text-secondary">-40%</span>
             </div>
 
-            <div class="cursor-pointer">
-                <i class="text-primary fa-regular fa-heart"></i>
+            <div *ngIf="!isNotLoggedIn" (click)="addProductToFavorite(index)" class="cursor-pointer">
+                <i *ngIf="!checkFavorite[index]" class="text-primary fa-regular fa-heart"></i>
+                <i *ngIf="checkFavorite[index]" class="fa-solid fa-heart"></i>
             </div>
         </div>
     </div>
